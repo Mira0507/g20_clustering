@@ -92,10 +92,10 @@ dend_colored_k3 <- color_branches(dend_gdp, k = 3)
 dend_colored_k4 <- color_branches(dend_gdp, k = 4)
 
 dendrogram_k3 <- plot(dend_colored_k3, 
-                      main = "Hierachical Clustering with k = 3",
+                      main = "Hierarchical Clustering with k = 3",
                       ylab = "Distance")
 dendrogram_k4 <- plot(dend_colored_k4, 
-                      main = "Hierachical Clustering with k = 4",
+                      main = "Hierarchical Clustering with k = 4",
                       ylab = "Distance")
 # analysis plots 
 elbow_plot <- 
@@ -121,7 +121,7 @@ clust_fn <- function(df, tit, cluster) {
         ggplot(df, aes(x = rescaled_total_GDP, 
                        y = rescaled_GDP_per_capita,
                        color = cluster)) +
-                geom_point(size = 2) +
+                geom_point(size = 3, alpha = 0.6) +
                 theme_classic() +
                 ggtitle(tit) + 
                 xlab("Rescaled Total GDP (US dollars)") + 
@@ -130,10 +130,10 @@ clust_fn <- function(df, tit, cluster) {
 
 # hierachical clustering plots 
 hc_k3_plot <- clust_fn(df8, 
-                       "Hierachical Clustering with k = 3", 
+                       "Hierarchical Clustering with k = 3", 
                        df8$hcluster_k3)
 hc_k4_plot <- clust_fn(df8, 
-                       "Hierachical Clustering with k = 4", 
+                       "Hierarchical Clustering with k = 4", 
                        df8$hcluster_k4)
 
 # k-means clustering plots
