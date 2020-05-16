@@ -160,6 +160,10 @@ clustering_plot_grid <- grid.arrange(hc_k3_plot,
                                      kmc_k4_plot,
                                      nrow = 2)
 
+# kmeans cluster table 
+library(formattable)
+
+km_table <- formattable(df9)
 #be0b50
 #1a930a
 #1795cb
