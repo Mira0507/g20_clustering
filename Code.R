@@ -3,6 +3,7 @@ library(ggplot2)
 library(cluster)
 library(dendextend)
 library(stringr)
+library(randomForest)
 
 h <- head    
 s <- summary
@@ -72,8 +73,8 @@ df7 <- df6 %>%
                hcluster_k4 = cutree(hc_gdp, k = 4))
 
 # kmeans clustering: df7
-df7$kmcluster_k3 <- kmeans(df6, centers = 3)$cluster
-df7$kmcluster_k4 <- kmeans(df6, centers = 4)$cluster
+df7$kmcluster_k3 <- kmeans(df6, centers = 3, nstart = 20)$cluster
+df7$kmcluster_k4 <- kmeans(df6, centers = 4, nstart = 20)$cluster
 
 # inner-join: df8
 df8 <- df7 %>% 
@@ -85,6 +86,10 @@ df8 <- df7 %>%
                kmcluster_k3 = factor(kmcluster_k3),
                kmcluster_k4 = factor(kmcluster_k4))
 
+# data cleaning for cluster table of kmeans clustering
+df9 <- data.frame(Country = df8$Country, 
+                  kmeans_k3 = df8$kmcluster_k3, 
+                  kmeans_k4 = df8$kmcluster_k4)
                                
 # dendrogram 
 dend_gdp <- as.dendrogram(hc_gdp)
@@ -154,3 +159,7 @@ clustering_plot_grid <- grid.arrange(hc_k3_plot,
                                      kmc_k3_plot,
                                      kmc_k4_plot,
                                      nrow = 2)
+
+#be0b50
+#1a930a
+#1795cb
